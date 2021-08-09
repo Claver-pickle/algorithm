@@ -11,32 +11,37 @@ public class Bracket {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int size = Integer.parseInt(br.readLine());
+		StringBuilder sb = new StringBuilder();
 		
 		Stack<String> stack = new Stack<String>();
 		
-		for(int i=0; i<size; i++) {
-			String a = br.readLine();
-			stack.add(a);
+		while(size --> 0) {
+			sb.append(solve(br.readLine())).append('\n');
 		}
 		
-		for(int i=0; i<size; i++) {
-			String b = stack.get(i);
-			int c = 0;
-			int d = 0;
-			for(int j=0; j<b.length(); j++) {
-				if(b.charAt(j) == '(') {
-					c++;
-				}else {
-					d++;
-				}
-			}
-			if(c == d) {
-				System.out.println("YES");
+		System.out.println(sb);
+		
+	}
+
+	private static String solve(String readLine) {
+		
+		int count = 0;
+		
+		for (char c : readLine.toCharArray()) {
+			if(c == '(') {
+				count++;
+			}else if(count == 0) {
+				return "NO";
 			}else {
-				System.out.println("NO");
+				count--;
 			}
 		}
 		
+		if(count == 0) {
+			return "YES";
+		}else {
+			return "NO";
+		}
 	}
 
 	
