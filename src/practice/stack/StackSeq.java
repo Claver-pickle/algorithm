@@ -29,7 +29,7 @@ public class StackSeq {
 				}
 				start = value;
 			}else if(stack.peek() != value) {
-				System.out.println("no");
+				System.out.println("NO");
 				return;
 			}
 			
